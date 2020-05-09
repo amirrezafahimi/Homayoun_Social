@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "496657920910",
+    "firebase_url": "https://homayounproject.firebaseio.com",
+    "project_id": "homayounproject",
+    "storage_bucket": "homayounproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:496657920910:android:3d38bcec6ea19bc2432adf",
+        "android_client_info": {
+          "package_name": "com.homayounrad.HomayounSocial"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "496657920910-el13ae1gji3gj0ibub9i1g5tpmk7fsfl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.homayounrad.HomayounSocial",
+            "certificate_hash": "9e2e5904ada933500d69594e8e552a80c3af4d31"
+          }
+        },
+        {
+          "client_id": "496657920910-s2b0miuge0knmj4k1usqsj3mdb0lb12o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_zu9k0Qm1qNdcugPDnnXLC7QR0tV4IGg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "496657920910-s2b0miuge0knmj4k1usqsj3mdb0lb12o.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "496657920910-q5quooq8s7v5df7f4ujj47am21m5ouip.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.homayounrad.HomayounSocial"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
