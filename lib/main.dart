@@ -12,8 +12,8 @@ class MyApp extends StatelessWidget {
       title: 'HomayounSocial',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
-        accentColor: Colors.teal,
+        primaryColor: Color(0xFFd81b60),
+        accentColor: Color(0xFF7bb241),
       ),
       home: Home(),
     );

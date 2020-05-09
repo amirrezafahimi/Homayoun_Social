@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
+final GoogleSignIn googleSignIn = GoogleSignIn();
 
 class Home extends StatefulWidget {
   @override
@@ -9,8 +12,49 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   bool isAuth = false;
 
+  void initState() {
+    super.initState();
+
+    googleSignIn.onCurrentUserChanged.listen((account) {
+      handleSignIn(account);
+    }, onError: (err) {
+      print('There has been an error with account: $err');
+    });
+
+    googleSignIn
+        .signInSilently(suppressErrors: false)
+        .then((account) => handleSignIn(account))
+        .catchError((err) {
+      print('There has been an error in signInSilently: $err');
+    });
+  }
+
+  handleSignIn(GoogleSignInAccount account) {
+    if (account != null) {
+      setState(() {
+        print('Client signed in $account');
+        isAuth = true;
+      });
+    } else {
+      setState(() {
+        isAuth = false;
+      });
+    }
+  }
+
+  login() {
+    googleSignIn.signIn();
+  }
+
+  logout() {
+    googleSignIn.signOut();
+  }
+
   Widget buildAuthScreen() {
-    return Text("Authenticated");
+    return RaisedButton(
+      onPressed: logout,
+      child: Text("Logout"),
+    );
   }
 
   Scaffold buildUnAuthScreen() {
@@ -21,8 +65,8 @@ class _HomeState extends State<Home> {
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
             colors: [
-              Theme.of(context).accentColor,
               Theme.of(context).primaryColor,
+              Theme.of(context).accentColor,
             ],
           ),
         ),
@@ -40,6 +84,7 @@ class _HomeState extends State<Home> {
               ),
             ),
             GestureDetector(
+              onTap: () => login(),
               child: Container(
                 height: 60.0,
                 width: 260.0,
