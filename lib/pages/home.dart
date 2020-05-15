@@ -16,13 +16,13 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   bool isAuth = false;
-  PageController pageController;
+  PageController pageControl;
   int pageIndex = 0;
 
   void initState() {
     super.initState();
 
-    pageController = PageController();
+    pageControl = PageController();
 
     googleSignIn.onCurrentUserChanged.listen((account) {
       handleSignIn(account);
@@ -41,7 +41,7 @@ class _HomeState extends State<Home> {
   @override
   void dispose() {
     super.dispose();
-    pageController.dispose();
+    pageControl.dispose();
   }
 
   handleSignIn(GoogleSignInAccount account) {
@@ -72,7 +72,7 @@ class _HomeState extends State<Home> {
   }
 
   onTap(int pageIndex) {
-    pageController.jumpToPage(
+    pageControl.jumpToPage(
       pageIndex,
     );
   }
@@ -87,7 +87,7 @@ class _HomeState extends State<Home> {
           Search(),
           Profile(),
         ],
-        controller: pageController,
+        controller: pageControl,
         onPageChanged: onPageChanged,
         physics: NeverScrollableScrollPhysics(),
       ),
