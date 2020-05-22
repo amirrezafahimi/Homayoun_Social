@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:fluttershare/widgets/header.dart';
 
@@ -7,18 +9,32 @@ class CreateAccount extends StatefulWidget {
 }
 
 class _CreateAccountState extends State<CreateAccount> {
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();
   String username;
 
   submit() {
-    _formKey.currentState.save();
-    Navigator.pop(context, username);
+    final form = _formKey.currentState;
+
+    if (form.validate()) {
+      form.save();
+      SnackBar snackBar = SnackBar(
+        content: Text('Welcome $username!'),
+      );
+      _scaffoldKey.currentState.showSnackBar(snackBar);
+
+      Timer(Duration(seconds: 2), () {
+        Navigator.pop(context, username);
+      });
+    }
   }
 
   @override
   Widget build(BuildContext parentContext) {
     return Scaffold(
-      appBar: header(context, title: 'Set up your profile'),
+      key: _scaffoldKey,
+      appBar:
+          header(context, title: 'Set up your profile', removeBackButton: true),
       body: ListView(
         children: <Widget>[
           Container(
@@ -37,8 +53,18 @@ class _CreateAccountState extends State<CreateAccount> {
                   padding: EdgeInsets.all(16.0),
                   child: Container(
                     child: Form(
+                      autovalidate: true,
                       key: _formKey,
                       child: TextFormField(
+                        validator: (value) {
+                          if (value.trim().length < 3 || value.isEmpty) {
+                            return 'Username too short';
+                          } else if (value.trim().length > 15) {
+                            return 'Username too long';
+                          } else {
+                            return null;
+                          }
+                        },
                         onSaved: (val) => username = val,
                         decoration: InputDecoration(
                             border: OutlineInputBorder(),
