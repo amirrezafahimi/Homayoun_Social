@@ -9,10 +9,10 @@ import 'package:fluttershare/models/user.dart';
 import 'package:fluttershare/pages/home.dart';
 import 'package:fluttershare/widgets/progress.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:image/image.dart' as Im;
 import 'package:image_picker/image_picker.dart';
 import 'package:image_size_getter/image_size_getter.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:image/image.dart' as Im;
 import 'package:uuid/uuid.dart';
 
 class Upload extends StatefulWidget {
