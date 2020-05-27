@@ -1,7 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttershare/widgets/header.dart';
-import 'package:fluttershare/widgets/progress.dart';
 
 class Timeline extends StatefulWidget {
   @override

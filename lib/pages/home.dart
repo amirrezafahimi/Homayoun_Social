@@ -13,6 +13,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 final GoogleSignIn googleSignIn = GoogleSignIn();
 final CollectionReference usersRef = Firestore.instance.collection('users');
 final CollectionReference postRef = Firestore.instance.collection('posts');
+final commentsRef = Firestore.instance.collection('comments');
 final StorageReference storageRef = FirebaseStorage.instance.ref();
 final DateTime timestamp = DateTime.now();
 User currentUser;
