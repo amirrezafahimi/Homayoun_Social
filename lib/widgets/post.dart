@@ -125,7 +125,6 @@ class _PostState extends State<Post> {
   }
 
   addLikeToActivityFeed() {
-
     bool isNotPostOwner = currentUserId != ownerId;
     if (isNotPostOwner) {
       activityFeedRef
@@ -142,7 +141,6 @@ class _PostState extends State<Post> {
         'timestamp': timestamp
       });
     }
-
   }
 
   removeLikeFromActivityFeed() {
